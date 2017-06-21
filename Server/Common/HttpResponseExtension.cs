@@ -6,7 +6,8 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Web;
-using System.Web.Script.Serialization;
+using Newtonsoft;
+using Newtonsoft.Json;
 
 namespace Server.Common
 {
@@ -21,8 +22,7 @@ namespace Server.Common
             }
             else
             {
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                str = serializer.Serialize(obj);
+                str = JsonConvert.SerializeObject(obj);
             }
             HttpResponseMessage result = new HttpResponseMessage { Content = new StringContent(str, Encoding.GetEncoding("UTF-8"), "application/json") };
             return result;

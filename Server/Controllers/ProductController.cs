@@ -12,7 +12,7 @@ namespace Server.Controllers
 {
     public class ProductController : ApiController
     {
-        [CompressContent]
+        [DeflateCompression]
         [CacheFilter(CacheTimeDuration = 100)]
         [HttpGet]
         public HttpResponseMessage GetProduct(string id)
@@ -23,7 +23,7 @@ namespace Server.Controllers
             resultMsg.StatusCode = (int)StatusCodeEnum.Success;
             resultMsg.Info = StatusCodeEnum.Success.GetEnumText();
             resultMsg.Data = product;
-            return HttpResponseExtension.toJson(JsonConvert.SerializeObject(resultMsg));
+            return HttpResponseExtension.toJson(resultMsg);
         }
 
 

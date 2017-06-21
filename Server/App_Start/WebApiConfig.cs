@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Server
 {
@@ -16,7 +17,9 @@ namespace Server
             config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
             // Web API routes
             config.MapHttpAttributeRoutes();
-            config.Filters.Add(new Filters.ApiSecurityFilter());
+
+
+           /// config.Filters.Add(new Filters.ApiSecurityFilter());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
